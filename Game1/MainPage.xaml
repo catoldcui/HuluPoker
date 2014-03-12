@@ -1,0 +1,139 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Game1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    BackKeyPress="backKeyPress"
+    shell:SystemTray.IsVisible="False">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:RotateTransition Mode='In180Clockwise'/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:RotateTransition Mode='In180Clockwise'/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:RotateTransition Mode="Out180Clockwise"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:RotateTransition Mode="Out180Clockwise"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot">
+
+        <Canvas HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100">
+            <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="1200" VerticalAlignment="Top" Width="1200" Canvas.Left="-400" Canvas.Top="-626">
+                <Image Height="1200" Width="1200" Source="/Assets/Resources/level1.png"/>
+                <Button x:Name="g_0" Content="" Canvas.Left="704" Canvas.Top="886" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_1" Content="" Canvas.Left="826" Canvas.Top="794" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_2" Content="" Canvas.Left="826" Canvas.Top="602" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_3" Content="" Canvas.Left="972" Canvas.Top="522" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_4" Canvas.Left="826" Canvas.Top="404" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_5" Content="" Canvas.Left="680" Canvas.Top="450" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_6" Canvas.Left="412" Canvas.Top="424" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_7" Content="" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" Canvas.Left="186" Canvas.Top="441" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_8" Content="" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" Canvas.Left="816" Canvas.Top="191" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_9" Canvas.Left="656" Canvas.Top="48" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Image x:Name="hero" Height="194" Canvas.Left="694" Canvas.Top="798" Width="100" Source="/Assets/Resources/moveHero.png" RenderTransformOrigin="0.359,0.491">
+                    <Image.RenderTransform>
+                        <CompositeTransform x:Name="heroScale" TranslateX="28.2"/>
+                    </Image.RenderTransform>
+                </Image>
+            </Canvas>
+        </Canvas>
+        <Button Content="主菜单" BorderBrush="{x:Null}" FontSize="36" Margin="583,392,25,0" Click="Button_Click" >
+            <Button.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF16A6A" Offset="0"/>
+                    <GradientStop Color="#FFFFA11A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Foreground>
+        </Button>
+
+        <!-- 本地化说明:
+            若要本地化显示的字符串，请将其值复制到应用程序的非特定语言资源文件(AppResources.resx)
+            中的适当命名的键，然后
+            将属性的引号之间的硬编码文本值
+            替换为其路径指向该字符串名称的绑定子句。
+
+            例如:
+
+                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
+
+            此绑定指向模板的名为“ApplicationTitle”的字符串资源。
+
+            在“项目属性”选项卡中添加受支持的语言将会为
+            每种语言创建一个新的 resx 文件，该文件可以包含 UI 字符串的翻译值
+            。这些示例中的绑定将导致在运行时从
+            与应用程序的 CurrentUICulture 匹配的 .resx 文件中
+            提取属性的值。
+         -->
+
+        <!--取消注释，以显示对齐网格，从而帮助确保
+            控件在公用边界上对齐。图像在系统栏中显示时的
+            上边距为 -32px。如果隐藏了系统栏，则将此值设为 0
+            (或完全删除边距)。
+
+            在发送之前删除此 XAML 和图像本身。-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+    </Grid>
+
+</phone:PhoneApplicationPage>

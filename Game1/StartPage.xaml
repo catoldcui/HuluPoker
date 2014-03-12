@@ -1,0 +1,241 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Game1.StartPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    
+    Loaded="PhoneApplicationPage_Loaded"
+    BackKeyPress="backKeyPress"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideUpFadeOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Canvas HorizontalAlignment="Left" Height="480" VerticalAlignment="Top" Width="800">
+            <Canvas.Background>
+                <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/startPage.png" Opacity="0.8"/>
+            </Canvas.Background>
+            <Canvas x:Name="startCanvas" Height="441" Canvas.Left="98" Canvas.Top="26" Width="681">
+                <Image Height="139" Width="642" Source="/Assets/Resources/title.png" Canvas.Top="-10"/>
+                <Button Content="开始游戏" Canvas.Left="141" Canvas.Top="149" Width="339" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFB29B0C" FontWeight="Bold" FontSize="48" Click="Button_Click">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0A53D4" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFFFDE0D" Opacity="0.525"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="resumeBtn" Content="继续游戏" Canvas.Left="141" Canvas.Top="266" Width="339" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFB29B0C" FontWeight="Bold" FontSize="48" Click="Button_Click_1">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0A53D4" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFFFDE0D" Opacity="0.525"/>
+                    </Button.Background>
+
+                </Button>
+                <Ellipse Height="64" Canvas.Left="546" Canvas.Top="356" Width="128" Stroke="#FFFFB413" Opacity="0.6" MouseLeftButtonDown="helpBtnClicked">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE0810F" Offset="1"/>
+                            <GradientStop Color="#FFF1EBAE"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Canvas.Left="577" TextWrapping="Wrap" Text="帮助" Canvas.Top="362" FontSize="36"  MouseLeftButtonDown="helpBtnClicked">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0031D8" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <Image x:Name="settingImg" Height="58" Canvas.Left="-78" Canvas.Top="359" Width="82" Source="/Assets/Resources/setting.png" MouseLeftButtonUp="settingClicked"/>
+            </Canvas>
+            <Canvas x:Name="settingCanvas" Height="480" Width="800" Visibility="Collapsed">
+                <Rectangle Fill="#FF0AB3D8" Height="445" Canvas.Left="28" Canvas.Top="10" Width="746" Opacity="0.395"/>
+                <TextBlock Canvas.Left="345" TextWrapping="Wrap" Text="设置" FontSize="48" Canvas.Top="43">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0031D8" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <TextBlock Canvas.Left="183" TextWrapping="Wrap" Text="音乐：" FontSize="48" Canvas.Top="132">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0031D8" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <TextBlock Canvas.Left="183" TextWrapping="Wrap" Text="音效：" FontSize="48" Canvas.Top="291">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0031D8" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <RadioButton x:Name="musicOpen" GroupName="music" Content="开" Canvas.Left="383" Canvas.Top="112" Height="107" Width="128" FontSize="48" Click="musicBtnClicked">
+                    <RadioButton.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFEE5116" Offset="1"/>
+                            <GradientStop Color="#FF107DFF"/>
+                        </LinearGradientBrush>
+                    </RadioButton.BorderBrush>
+                    <RadioButton.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF160DCD" Offset="0"/>
+                            <GradientStop Color="#FFF9640E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </RadioButton.Foreground>
+                </RadioButton>
+                <RadioButton x:Name="musicClose" Content="关" GroupName="music" Canvas.Left="551" Canvas.Top="110" Width="128" Height="107" FontSize="48" Click="musicBtnClicked">
+                    <RadioButton.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFEE5116" Offset="1"/>
+                            <GradientStop Color="#FF107DFF"/>
+                        </LinearGradientBrush>
+                    </RadioButton.BorderBrush>
+                    <RadioButton.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF160DCD" Offset="0"/>
+                            <GradientStop Color="#FFF9640E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </RadioButton.Foreground>
+                </RadioButton>
+                <RadioButton x:Name="soundOpen"  GroupName="sound" Content="开" Canvas.Left="383" Canvas.Top="271" Height="107" Width="128" FontSize="48" Click="soundBtnClicked">
+                    <RadioButton.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFEE5116" Offset="1"/>
+                            <GradientStop Color="#FF107DFF"/>
+                        </LinearGradientBrush>
+                    </RadioButton.BorderBrush>
+                    <RadioButton.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF160DCD" Offset="0"/>
+                            <GradientStop Color="#FFF9640E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </RadioButton.Foreground>
+                </RadioButton>
+                <RadioButton x:Name="soundClose" Content="关"  GroupName="sound" Canvas.Left="551" Canvas.Top="269" Width="128" Height="107" FontSize="48" Click="soundBtnClicked">
+                    <RadioButton.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFEE5116" Offset="1"/>
+                            <GradientStop Color="#FF107DFF"/>
+                        </LinearGradientBrush>
+                    </RadioButton.BorderBrush>
+                    <RadioButton.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF160DCD" Offset="0"/>
+                            <GradientStop Color="#FFF9640E" Offset="1"/>
+                        </LinearGradientBrush>
+                    </RadioButton.Foreground>
+                </RadioButton>
+                <Button Content="返回" Canvas.Left="666" Canvas.Top="376" Click="Button_Click_5"  BorderThickness="1" BorderBrush="#FFFBAA1B" FontSize="36" Width="120" Height="90">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0A53D4" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF18D3A0" Opacity="0.525"/>
+                    </Button.Background>
+                </Button>
+            </Canvas>
+            <Canvas x:Name="helpCanvas" Height="480" Width="800" Visibility="Collapsed">
+                <Rectangle Fill="#FF0AB3D8" Height="394" Canvas.Left="28" Canvas.Top="10" Width="746" Opacity="0.395"/>
+                <Button Content="&lt;" Canvas.Left="280" Canvas.Top="390" Click="Button_Click_3"  BorderThickness="1" BorderBrush="#FFFBAA1B" FontSize="36" Width="120" Height="90">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0A53D4" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF15BD8F" Opacity="0.525"/>
+                    </Button.Background>
+                </Button>
+                <Button Content="&gt;" Canvas.Left="397" Canvas.Top="390" Click="Button_Click_2" BorderThickness="1" BorderBrush="#FFFBAA1B" FontSize="36" Width="120" Height="90">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0A53D4" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF13B691" Opacity="0.525"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock Canvas.Left="364" TextWrapping="Wrap" Text="帮助" FontSize="36" Canvas.Top="25">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0031D8" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                </TextBlock>
+                <Button Content="返回" Canvas.Left="654" Canvas.Top="390" Click="Button_Click_4"  BorderThickness="1" BorderBrush="#FFFBAA1B" FontSize="36" Width="120" Height="90">
+                    <Button.Foreground>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF0A53D4" Offset="1"/>
+                            <GradientStop Color="#FFF50606"/>
+                        </LinearGradientBrush>
+                    </Button.Foreground>
+                    <Button.Background>
+                        <SolidColorBrush Color="#FF18D3A0" Opacity="0.525"/>
+                    </Button.Background>
+                </Button>
+                <Canvas Height="312" Canvas.Left="49" Canvas.Top="78" Width="701">
+                    <Image x:Name="helpTypeImg3" Height="318" Width="608" Stretch="Fill" Canvas.Left="45" Canvas.Top="-6" Source="/Assets/Resources/helpImg/3.png" Visibility="Collapsed"/>
+                    <Image x:Name="helpTypeImg2" Height="318" Width="608" Stretch="Fill" Canvas.Left="45" Canvas.Top="-6" Source="/Assets/Resources/helpImg/2.png" Visibility="Collapsed"/>
+                    <Image x:Name="helpTypeImg1" Height="318" Width="608" Stretch="Fill" Canvas.Left="45" Canvas.Top="-6" Source="/Assets/Resources/helpImg/1.png" Visibility="Collapsed"/>
+                    <Image x:Name="helpTypeImg0" Height="318" Width="608" Stretch="Fill" Canvas.Left="45" Canvas.Top="-6" Source="/Assets/Resources/helpImg/0.png"/>
+                </Canvas>
+            </Canvas>
+            <TextBlock x:Name="versionText" Canvas.Left="658" TextWrapping="Wrap" Canvas.Top="445" FontStyle="Italic">
+            	<Run Text="v"/>
+            	<Run Text="1.0.140224"/>
+            </TextBlock>
+        </Canvas>
+    </Grid>
+
+</phone:PhoneApplicationPage>
