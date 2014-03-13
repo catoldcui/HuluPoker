@@ -11,15 +11,16 @@ namespace Game1.Model
 {
     public class Config
     {
+        public static bool IsXmlExist = false;
         public static string Version = "v1.1.140304";
         // 每个关卡血量
         public static int[] MonstersBlood1 = {
                                         5, 20, 15, 200, 20, 25, 30, 50, 70, 3
                                     };
         public static int[] MonstersBlood = {
-                                        50, 100, 150, 200, 200, 250, 300, 350, 250, 300
+                                        50, 50, 100, 100, 200, 200, 250, 250, 300, 350, 150, 150, 200, 200, 200,200, 100
                                     };
-        public static int LevelNum = 10;
+        public static int LevelNum = 17;
         public static int CurLevel = 0;
         public static int FaceLevel;
         public static int HeroFullBlood = 100;
@@ -42,7 +43,7 @@ namespace Game1.Model
             winlist.Add(0);
             ismusicopen = IsMusicOpen;
             issoundopen = IsSoundOpen;
-            heroStartBlood = HeroStartBlood;
+            heroStartBlood = HeroFullBlood;
         }
         public static void setCurLevel(int num)
         {

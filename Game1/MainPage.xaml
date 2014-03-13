@@ -39,62 +39,100 @@
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot">
 
-        <Canvas HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100">
-            <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="1200" VerticalAlignment="Top" Width="1200" Canvas.Left="-400" Canvas.Top="-626">
-                <Image Height="1200" Width="1200" Source="/Assets/Resources/level1.png"/>
-                <Button x:Name="g_0" Content="" Canvas.Left="704" Canvas.Top="886" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+        <Canvas x:Name="mainCanvas" Height ="1500" Width="1500" VerticalAlignment="Top" Margin="0,0,-700,-1020" MouseMove="canvas_MouseMove" MouseLeftButtonDown="canvas_MouseLeftButtonDown">
+            <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="1500" VerticalAlignment="Top" Width="1500" Canvas.Left="-192" Canvas.Top="-474">
+                <Image Height="1500" Width="1500" Source="/Assets/Resources/map.png" Canvas.Top="-10"/>
+                <Button x:Name="g_0" Content="" Canvas.Left="297" Canvas.Top="854" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_1" Content="" Canvas.Left="826" Canvas.Top="794" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_1" Content="" Canvas.Left="450" Canvas.Top="705" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_2" Content="" Canvas.Left="826" Canvas.Top="602" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_2" Content="" Canvas.Left="523.5" Canvas.Top="539" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                    <Button.RenderTransform>
+                        <CompositeTransform Rotation="-2.7"/>
+                    </Button.RenderTransform>
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_3" Content="" Canvas.Left="972" Canvas.Top="522" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_3" Canvas.Left="573" Canvas.Top="401" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_4" Canvas.Left="826" Canvas.Top="404" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_4" Content="" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" Canvas.Left="717" Canvas.Top="463" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_5" Content="" Canvas.Left="680" Canvas.Top="450" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_5" Canvas.Left="907" Canvas.Top="371" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_6" Canvas.Left="412" Canvas.Top="424" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_6" Canvas.Left="1062" Canvas.Top="311" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_7" Content="" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" Canvas.Left="186" Canvas.Top="441" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_7" Canvas.Left="1234" Canvas.Top="401" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_8" Content="" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" Canvas.Left="816" Canvas.Top="191" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_8" Canvas.Left="1146" Canvas.Top="523" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="g_9" Canvas.Left="656" Canvas.Top="48" RenderTransformOrigin="0.067,-0.167" Height="112" Width="98" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                <Button x:Name="g_9" Canvas.Left="1118" Canvas.Top="668" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
                     <Button.Background>
                         <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
                     </Button.Background>
                 </Button>
-                <Image x:Name="hero" Height="194" Canvas.Left="694" Canvas.Top="798" Width="100" Source="/Assets/Resources/moveHero.png" RenderTransformOrigin="0.359,0.491">
+                <Button x:Name="g_10" Canvas.Left="1216" Canvas.Top="828" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_11" Content="" Canvas.Left="213" Canvas.Top="498" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_12" Canvas.Left="320" Canvas.Top="270" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_13" Content="" Canvas.Left="396" Canvas.Top="424" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_14" Content="" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" Canvas.Left="931" Canvas.Top="629" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_15" Canvas.Left="837" Canvas.Top="311" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="g_16" Canvas.Left="555" Canvas.Top="770" RenderTransformOrigin="0.067,-0.167" Height="90" Width="80" BorderThickness="0" ClickMode="Press" Click="btnClick">
+                    <Button.Background>
+                        <ImageBrush Stretch="Fill" ImageSource="/Assets/Resources/flag1.png"/>
+                    </Button.Background>
+                </Button>
+                <Image x:Name="hero" Height="172" Canvas.Left="310" Canvas.Top="770" Width="76" Source="/Assets/Resources/moveHero.png" RenderTransformOrigin="0.434,0.558">
                     <Image.RenderTransform>
-                        <CompositeTransform x:Name="heroScale" TranslateX="28.2"/>
+                        <CompositeTransform x:Name="heroScale"/>
                     </Image.RenderTransform>
                 </Image>
             </Canvas>

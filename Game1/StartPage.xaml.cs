@@ -25,13 +25,13 @@ namespace Game1
 
         public void initBtn()
         {
-            if (Config.WinList.Count <= 1)
+            if (Config.IsXmlExist)
             {
-                resumeBtn.IsEnabled = false;
+                resumeBtn.IsEnabled = true;
             }
             else
             {
-                resumeBtn.IsEnabled = true;
+                resumeBtn.IsEnabled = false;
             }
         }
         
@@ -53,7 +53,7 @@ namespace Game1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Config.WinList.Count <= 1)
+            if (!Config.IsXmlExist)
             {
                 DoDension.pauseDension();
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));

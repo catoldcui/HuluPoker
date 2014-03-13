@@ -221,6 +221,7 @@
     <Content Include="Assets\Resources\hero.png" />
     <Content Include="Assets\Resources\level1.png" />
     <Content Include="Assets\Resources\level1Boss.png" />
+    <Content Include="Assets\Resources\map.png" />
     <Content Include="Assets\Resources\moveHero.png" />
     <Content Include="Assets\Resources\setting.png" />
     <Content Include="Assets\Resources\startPage.png" />

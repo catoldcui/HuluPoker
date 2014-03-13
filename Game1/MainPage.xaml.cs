@@ -31,6 +31,10 @@ namespace Game1
         int fromBtn;
         bool lockMusic = false;
 
+        double startX, startY; // for touching moving
+        static double[] TopLimit = { -474, -192 };
+        static double[] LeftLimit = { -554, -192 };
+
         List<int> moveLine = new List<int>();
         // 构造函数
         public MainPage()
@@ -80,6 +84,8 @@ namespace Game1
                     b.Background = i;
                 });
         }
+
+
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
@@ -133,7 +139,7 @@ namespace Game1
 
         private void btnClick(object sender, RoutedEventArgs e)
         {
-            toBtn = int.Parse(((Button)sender).Name.ElementAt(2).ToString());
+            toBtn = int.Parse(((Button)sender).Name.Substring(2).ToString());
             targetLoc = toBtn;
             //if (sender.Equals(g_0))
             //{
@@ -174,29 +180,27 @@ namespace Game1
             //Debug.WriteLine(targetLoc);
             
             //Debug.WriteLine(targetLoc);
-
-            if(toBtn == 7 && fromBtn == 8 ||
-                toBtn == 8 && fromBtn == 7 ||
-                toBtn == 4 && fromBtn == 3 ||
-                toBtn == 3 && fromBtn == 4)
-            {
-                toBtn = -1;
-                targetLoc = -1;
-                return;
-            }
-            else if (Math.Abs(toBtn - fromBtn) == 1)
+            if ( Math.Abs(toBtn - fromBtn) == 1 && !(fromBtn == 10 && toBtn == 11))
             {
                 canvas.IsHitTestVisible = false;
                 moveLine = findMoveLine(fromBtn, toBtn);
                 MoveHero();
             }
-            else if (toBtn == 2 && fromBtn == 4 ||
-                  toBtn == 4 && fromBtn == 2 ||
-                  toBtn == 4 && fromBtn == 8 ||
-                  toBtn == 8 && fromBtn == 4)
+            else if (toBtn == 2 && fromBtn == 13 ||
+                  toBtn == 13 && fromBtn == 2 ||
+                  toBtn == 13 && fromBtn == 11 ||
+                  toBtn == 11 && fromBtn == 13 ||
+                  toBtn == 13 && fromBtn == 12 ||
+                  toBtn == 12 && fromBtn == 13 ||
+                  toBtn == 4 && fromBtn == 14 ||
+                  toBtn == 14 && fromBtn == 4 ||
+                  toBtn == 5 && fromBtn == 15 ||
+                  toBtn == 15 && fromBtn == 5 ||
+                  toBtn == 1 && fromBtn == 16 ||
+                  toBtn == 16 && fromBtn == 1)
             {
                 canvas.IsHitTestVisible = false;
-                moveLine = findMoveLine(fromBtn, toBtn);
+                //moveLine = findMoveLine(fromBtn, toBtn);
                 MoveHero();
             }
             else
@@ -238,7 +242,6 @@ namespace Game1
             }
             playSound("stepBGM.wav", true);
             timer = new Timer(move, null, 0, Convert.ToInt64(speed / Math.Abs(m[1])));
-            
         }
 
         public List<int> findMoveLine(int from, int to)
@@ -342,7 +345,7 @@ namespace Game1
                 if(m[1] < 0){
                     Canvas.SetTop(hero, --t);
                     
-                    if (y + 1 <= 0)
+                    if (y + 1 <= TopLimit[1])
                     {
                         Canvas.SetTop(canvas, ++y);
                     }
@@ -350,7 +353,7 @@ namespace Game1
                 else if(m[1] != 0)
                 {
                     Canvas.SetTop(hero, ++t);
-                    if (y - 1 >= -626)
+                    if (y - 1 >= TopLimit[0])
                     {
                         Canvas.SetTop(canvas, --y);
                     }
@@ -360,7 +363,7 @@ namespace Game1
                 if (m[0] < 0)
                 {
                     Canvas.SetLeft(hero, l - deltaL);
-                    if (x + deltaL < 0)
+                    if (x + deltaL < LeftLimit[1])
                     {
                         Canvas.SetLeft(canvas, x + deltaL);
                     }
@@ -369,7 +372,7 @@ namespace Game1
                 {
                     Canvas.SetLeft(hero, l + deltaL);
                     
-                    if (x - deltaL >= -400)
+                    if (x - deltaL >= LeftLimit[0])
                     {
                         Canvas.SetLeft(canvas, x - deltaL);
                     }
@@ -404,6 +407,20 @@ namespace Game1
                     return g_6;
                 case 9:
                     return g_9;
+                case 10:
+                    return g_10;
+                case 11:
+                    return g_11;
+                case 12:
+                    return g_12;
+                case 13:
+                    return g_13;
+                case 14:
+                    return g_14;
+                case 15:
+                    return g_15;
+                case 16:
+                    return g_16;
                 default:
                     return null;
             }
@@ -464,34 +481,92 @@ namespace Game1
             double hx = Canvas.GetLeft(b);
             double hy = Canvas.GetTop(b);
             Canvas.SetLeft(hero, hx);
-            Canvas.SetTop(hero, hy - 90);
+            Canvas.SetTop(hero, hy - 80);
 
-            if (1200 - hx < 400)
+            if (400 - hx > LeftLimit[1])
             {
-                Canvas.SetLeft(canvas, -400);
+                Canvas.SetLeft(canvas, LeftLimit[1]);
             }
-            else if (hx < 400)
+            else if (400 - hx < LeftLimit[0])
             {
-                Canvas.SetLeft(canvas, 0);
+                Canvas.SetLeft(canvas, LeftLimit[0]);
             }
             else
             {
-                Canvas.SetLeft(canvas, 400 - hx);
+                Canvas.SetLeft(canvas, hx - 400);
             }
 
-            if (1200 - hy < 240)
+            if ( 240 - hy < TopLimit[0])
             {
-                Canvas.SetTop(canvas, -720);
+                Canvas.SetTop(canvas, TopLimit[0]);
             }
-            else if (hy < 240)
+            else if ( 240 - hy > TopLimit[1])
             {
-                Canvas.SetTop(canvas, 0);
+                Canvas.SetTop(canvas, TopLimit[1]);
             }
             else
             {
                 Canvas.SetTop(canvas, 240 - hy);
             }
         }
+
+        private void canvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            System.Windows.Point p = e.GetPosition(canvas);
+            startX = p.X;
+            startY = p.Y;
+        }
+
+        private void canvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            System.Windows.Point p = e.GetPosition(canvas);
+            double offsetX = p.X - startX + Canvas.GetLeft(canvas);
+            double offsetY = p.Y - startY + Canvas.GetTop(canvas);
+
+            Canvas.SetLeft(canvas, offsetX);
+            Canvas.SetTop(canvas, offsetY);
+
+            if (offsetX >= LeftLimit[1])
+            {
+                Canvas.SetLeft(canvas, LeftLimit[1]);
+            }
+            if (offsetX <= LeftLimit[0])
+            {
+                Canvas.SetLeft(canvas, LeftLimit[0]);
+            }
+            if (offsetY >= TopLimit[1])
+            {
+                Canvas.SetTop(canvas, TopLimit[1]);
+            }
+            if (offsetY <= TopLimit[0])
+            {
+                Canvas.SetTop(canvas, TopLimit[0]);
+            }
+        /*    if (offsetX + 400 >= LeftLimit[1])
+            {
+                Canvas.SetLeft(canvas, LeftLimit[1]);
+            } else if (400 + offsetX <= LeftLimit[0])
+            {
+                Canvas.SetLeft(canvas, LeftLimit[0]);
+            }
+            else
+            {
+                Canvas.SetLeft(canvas, 400 + offsetX);
+            }
+
+            if ( 240 + offsetY >= TopLimit[1])
+            {
+                Canvas.SetTop(canvas, TopLimit[1]);
+            }else if ( 240 + offsetY <= TopLimit[0])
+            {
+                Canvas.SetTop(canvas, TopLimit[0]);
+            }
+            else
+            {
+                Canvas.SetTop(canvas, 240 + offsetY);
+            } */
+        }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -503,5 +578,6 @@ namespace Game1
             DoXml.SaveDataToXml();
             NavigationService.Navigate(new Uri("/StartPage.xaml?backFromGame=true", UriKind.Relative));
         }
+
     }
 }

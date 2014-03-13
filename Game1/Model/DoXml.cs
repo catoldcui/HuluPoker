@@ -22,11 +22,13 @@ namespace Game1.Model
                         XmlSerializer serializer = new XmlSerializer(typeof(Config));
                         Config data = (Config)serializer.Deserialize(stream);
                         Config.setConfig(data);
+                        Config.IsXmlExist = true;
                     }
                 }
             } catch{
                 SaveDataToXml();
                 LoadDataFromXml();
+                Config.IsXmlExist = false;
             }
         }
 
