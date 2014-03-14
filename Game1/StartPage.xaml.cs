@@ -44,10 +44,7 @@ namespace Game1
         {
             base.OnNavigatedTo(e);
             string parameter = string.Empty;
-            if (!NavigationContext.QueryString.TryGetValue("backFromGame", out parameter))
-            {
-                DoXml.LoadDataFromXml();
-            }
+            DoXml.LoadDataFromXml();
             initBtn();
         }
 
